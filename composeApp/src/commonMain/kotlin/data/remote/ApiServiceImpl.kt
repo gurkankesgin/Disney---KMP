@@ -38,7 +38,7 @@ class ApiServiceImpl : ApiService {
         }
 
 
-    override suspend fun getCharacterList(): HttpResponse {
+    override suspend fun getCharacterResponseModel(): HttpResponse {
         return client.get(GetCharacterList.path)
     }
 }

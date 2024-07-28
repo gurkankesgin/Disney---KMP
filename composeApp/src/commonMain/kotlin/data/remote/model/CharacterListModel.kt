@@ -5,11 +5,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CharacterListModel(
-    @SerialName("data") val data: List<Data>?,
+    @SerialName("data") val data: List<Character>?,
 )
 
 @Serializable
-data class Data(
+data class Character(
     @SerialName("_id") val id: Int?,
     @SerialName("films") val films: List<String>?,
     @SerialName("shortFilms") val shortFilms: List<String>?,
