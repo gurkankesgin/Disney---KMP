@@ -3,7 +3,6 @@ package ui.screens.characterlist
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import data.remote.model.Character
-import data.repository.CharacterRepositoryImpl
 import domain.usecase.GetCharacterUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,15 +15,12 @@ import kotlinx.coroutines.launch
 /**
  * Created by gurkankesgin on 28.07.2024.
  */
-class CharacterListViewModel : ViewModel() {
+class CharacterListViewModel(private var useCase: GetCharacterUseCase?) : ViewModel() {
 
     private val _uiState = MutableStateFlow<List<Character>?>(null)
     val uiState: StateFlow<List<Character>?> = _uiState.asStateFlow()
 
-    private var useCase: GetCharacterUseCase? = null
-
     init {
-        useCase = GetCharacterUseCase(CharacterRepositoryImpl())
         getResult()
     }
 
