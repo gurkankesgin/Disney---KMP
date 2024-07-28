@@ -50,6 +50,12 @@ kotlin {
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.io.ktor.ktor.client.serialization)
 
+            // navigation
+            implementation(libs.navigation.compose)
+
+            //viewmodel
+            implementation(libs.viewmodel.compose)
+
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)

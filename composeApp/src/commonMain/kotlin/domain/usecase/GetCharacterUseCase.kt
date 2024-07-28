@@ -8,5 +8,5 @@ import domain.repository.CharacterRepository
  */
 class GetCharacterUseCase(private val repository: CharacterRepository) {
 
-    suspend operator fun invoke() = runCatching { repository.getCharacters() }
+    suspend operator fun invoke() = repository.getCharacters()
 }
