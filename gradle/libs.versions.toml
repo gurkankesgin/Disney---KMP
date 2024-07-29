@@ -12,6 +12,7 @@ navigation = "2.7.0-alpha07"
 viewmodelCompose = "2.8.0"
 koin = "3.6.0-alpha3"
 koinViewModel = "1.2.0-Beta4"
+coil-compose = "3.0.0-alpha08"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
@@ -27,7 +28,8 @@ koin-core = { module = "io.insert-koin:koin-core" , version.ref = "koin" }
 koin-android = { module = "io.insert-koin:koin-android" , version.ref = "koin" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koinViewModel" }
-
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil-compose"}
+coil-compose-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil-compose"}
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }

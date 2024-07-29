@@ -15,4 +15,5 @@ data class Character(
     @SerialName("shortFilms") val shortFilms: List<String>?,
     @SerialName("tvShows") val tvShows: List<String>?,
     @SerialName("imageUrl") val imageUrl: String?,
+    @SerialName("name") val name: String?,
 )

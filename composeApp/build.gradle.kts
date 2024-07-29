@@ -65,6 +65,10 @@ kotlin {
             // koin
             implementation(libs.koin.core)
             implementation(libs.koin.compose.viewmodel)
+
+            // coil
+            implementation(libs.coil.compose)
+            implementation(libs.coil.compose.ktor)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
