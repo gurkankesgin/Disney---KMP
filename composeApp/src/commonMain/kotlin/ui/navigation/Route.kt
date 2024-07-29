@@ -5,7 +5,8 @@ package ui.navigation
  * Created by gurkankesgin on 28.07.2024.
  */
 
-sealed class Route(val route: String) {
+sealed class Route(val name: String) {
 
-    data object CharacterList : Route(route = "CharacterList")
+    data object CharacterList : Route(name = "CharacterList")
+    data object Splash : Route(name = "Splash")
 }

@@ -1,15 +1,17 @@
 package ui.screens.characterlist
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -20,13 +22,12 @@ import androidx.compose.ui.unit.dp
 import data.remote.model.Character
 import disney.composeapp.generated.resources.Res
 import disney.composeapp.generated.resources.disney
-import disney.composeapp.generated.resources.header
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import ui.screens.characterlist.CharacterListViewModel.CharacterListUIState.Loading
 import ui.screens.characterlist.CharacterListViewModel.CharacterListUIState.Success
 import ui.screens.characterlist.item.CharacterListItem
+import ui.theme.Colors
 
 /**
  * Created by gurkankesgin on 28.07.2024.
@@ -39,16 +40,19 @@ fun CharacterListScreen(viewModel: CharacterListViewModel = koinInject<Character
         topBar = {
             TopAppBar(
                 backgroundColor = Color.White,
-                title = {
-                Text(
-                    text = stringResource(Res.string.header)
-                )
-            }, navigationIcon = {
-                Icon(
-                    painter = painterResource(Res.drawable.disney),
-                    contentDescription = null
-                )
-            })
+                title = { },
+                navigationIcon = {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Icon(
+                            modifier = Modifier.fillMaxWidth(),
+                            painter = painterResource(Res.drawable.disney),
+                            contentDescription = null
+                        )
+                    }
+                })
         }
     ) {
         Column(
@@ -67,10 +71,15 @@ fun CharacterListScreen(viewModel: CharacterListViewModel = koinInject<Character
 
 @Composable
 private fun CharacterList(list: List<Character>?) {
-    LazyColumn {
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = Modifier
+            .background(Colors.lighterGray)
+            .padding(8.dp)
+    ) {
         items(list.orEmpty()) { item ->
             CharacterListItem(
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier.fillMaxWidth(),
                 imageUrl = item.imageUrl,
                 name = item.name
             )
@@ -80,6 +89,6 @@ private fun CharacterList(list: List<Character>?) {
 
 @Composable
 private fun Progress() {
-    CircularProgressIndicator()
+    CircularProgressIndicator(color = Color.LightGray)
 }
 

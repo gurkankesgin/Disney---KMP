@@ -5,26 +5,24 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import data.di.networkModule
 import domain.di.repositoryModule
-import ui.di.uiModule
 import domain.di.useCaseModule
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinApplication
-import ui.screens.characterlist.CharacterListScreen
+import ui.di.uiModule
 import ui.navigation.Route
+import ui.screens.characterlist.CharacterListScreen
+import ui.screens.splash.SplashScreen
 
 @Composable
-@Preview
-fun App() {
-    MaterialTheme {
-        KoinApplication(
-            application = {
-                modules(listOf(networkModule, repositoryModule, useCaseModule, uiModule))
-            }
-        ) {
-            AppContent()
+fun App() = MaterialTheme {
+    KoinApplication(
+        application = {
+            modules(listOf(networkModule, repositoryModule, useCaseModule, uiModule))
         }
+    ) {
+        AppContent()
     }
 }
+
 
 @Composable
 fun AppContent() {
@@ -32,12 +30,20 @@ fun AppContent() {
 
     NavHost(
         navController = navController,
-        startDestination = Route.CharacterList.route
+        startDestination = Route.Splash.name
     ) {
         composable(
-            Route.CharacterList.route
+            Route.CharacterList.name
         ) {
             CharacterListScreen()
+        }
+
+        composable(
+            Route.Splash.name
+        ) {
+            SplashScreen {
+                navController.navigate(Route.CharacterList.name)
+            }
         }
     }
 }
