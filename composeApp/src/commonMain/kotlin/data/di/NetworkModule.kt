@@ -1,4 +1,4 @@
-package di
+package data.di
 
 import data.remote.ApiConstants
 import data.remote.ApiService

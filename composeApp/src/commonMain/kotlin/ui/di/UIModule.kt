@@ -1,4 +1,4 @@
-package di
+package ui.di
 
 import org.koin.dsl.module
 import ui.screens.characterlist.CharacterListViewModel

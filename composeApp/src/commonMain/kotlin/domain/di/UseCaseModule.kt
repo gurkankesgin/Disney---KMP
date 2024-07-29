@@ -1,4 +1,4 @@
-package di
+package domain.di
 
 import domain.usecase.GetCharacterUseCase
 import org.koin.core.module.Module

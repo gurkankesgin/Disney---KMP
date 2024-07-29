@@ -1,4 +1,4 @@
-package di
+package domain.di
 
 import data.repository.CharacterRepositoryImpl
 import domain.repository.CharacterRepository

@@ -3,10 +3,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import di.networkModule
-import di.repositoryModule
-import di.uiModule
-import di.useCaseModule
+import data.di.networkModule
+import domain.di.repositoryModule
+import ui.di.uiModule
+import domain.di.useCaseModule
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinApplication
 import ui.screens.characterlist.CharacterListScreen
