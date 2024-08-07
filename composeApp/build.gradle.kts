@@ -7,9 +7,14 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
+    sourceSets.commonMain {
+        kotlin.srcDir("build/generated/ksp/metadata")
+    }
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
@@ -39,6 +44,9 @@ kotlin {
             // koin
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+
+            //room
+            implementation(libs.room.runtime.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -69,6 +77,10 @@ kotlin {
             // coil
             implementation(libs.coil.compose)
             implementation(libs.coil.compose.ktor)
+
+            //Room
+            implementation(libs.room.runtime)
+            implementation(libs.sqlite.bundled)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -108,8 +120,21 @@ android {
     buildFeatures {
         compose = true
     }
+    
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
+
     dependencies {
         debugImplementation(compose.uiTooling)
+        // Room
+        add("kspCommonMainMetadata", libs.room.compiler)
+    }
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
+    if (name != "kspCommonMainKotlinMetadata" ) {
+        dependsOn("kspCommonMainKotlinMetadata")
     }
 }
 
