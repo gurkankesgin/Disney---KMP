@@ -1,7 +1,6 @@
 # Disney - KMP 
 
-An application example developed with a Pure Kotlin libraries, demonstrating how to easily write code for two different platforms using Kotlin Multiplatform Mobile (KMP), following Clean Architecture principles.
-
+An application example developed with Pure Kotlin libraries, demonstrating how to easily write code for two different platforms using Kotlin Multiplatform Mobile (KMP), following Clean Architecture principles and being an offline first project.
 ![1_TDiTpS9O_MdIRZ0vosLX5A](https://github.com/user-attachments/assets/b0315244-9ab3-42c2-86a3-4c13060da427)
 
 ## Tech Stack
@@ -15,6 +14,7 @@ An application example developed with a Pure Kotlin libraries, demonstrating how
 * AndroidX
 * Ktor
 * Coil
+* Room
 
 ## API Endpoint
 
