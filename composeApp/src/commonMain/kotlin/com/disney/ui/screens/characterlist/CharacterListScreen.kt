@@ -3,7 +3,6 @@ package com.disney.ui.screens.characterlist
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -20,20 +19,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.disney.domain.model.Character
-import disney.composeapp.generated.resources.Res
-import disney.composeapp.generated.resources.disney
-import org.jetbrains.compose.resources.painterResource
-import org.koin.compose.koinInject
 import com.disney.ui.screens.characterlist.CharacterListViewModel.CharacterListUIState.Loading
 import com.disney.ui.screens.characterlist.CharacterListViewModel.CharacterListUIState.Success
 import com.disney.ui.screens.characterlist.item.CharacterListItem
 import com.disney.ui.theme.Colors
+import disney.composeapp.generated.resources.Res
+import disney.composeapp.generated.resources.disney
+import org.jetbrains.compose.resources.painterResource
+import org.koin.compose.koinInject
 
 /**
  * Created by gurkankesgin on 28.07.2024.
  */
 @Composable
-fun CharacterListScreen(viewModel: CharacterListViewModel = koinInject<CharacterListViewModel>()) {
+fun CharacterListScreen(
+    viewModel: CharacterListViewModel = koinInject<CharacterListViewModel>(),
+) {
     val uiState = viewModel.uiState.collectAsState()
 
     Scaffold(
@@ -42,16 +43,12 @@ fun CharacterListScreen(viewModel: CharacterListViewModel = koinInject<Character
                 backgroundColor = Color.White,
                 title = { },
                 navigationIcon = {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Icon(
-                            modifier = Modifier.fillMaxWidth(),
-                            painter = painterResource(Res.drawable.disney),
-                            contentDescription = null
-                        )
-                    }
+                    Icon(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        painter = painterResource(Res.drawable.disney),
+                        contentDescription = null
+                    )
                 })
         }
     ) {
@@ -85,7 +82,7 @@ private fun CharacterList(list: List<Character>?) {
             CharacterListItem(
                 modifier = Modifier.fillMaxWidth(),
                 imageUrl = item.imageUrl,
-                name = item.name
+                name = item.name,
             )
         }
     }

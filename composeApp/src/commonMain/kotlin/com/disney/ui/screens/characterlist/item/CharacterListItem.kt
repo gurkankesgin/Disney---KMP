@@ -19,11 +19,10 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun CharacterListItem(modifier: Modifier, imageUrl: String?, name: String?) {
-    Card(
-        modifier = modifier
-    ) {
+
+    Card {
         Row(
-            modifier = Modifier.padding(16.dp),
+            modifier = modifier.padding(16.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {

@@ -1,12 +1,18 @@
 package com.disney.ui.navigation
 
+import kotlinx.serialization.Serializable
+
 
 /**
  * Created by gurkankesgin on 28.07.2024.
  */
 
-sealed class Route(val name: String) {
+@Serializable
+sealed class Route(val path: String) {
 
-    data object CharacterList : Route(name = "CharacterList")
-    data object Splash : Route(name = "Splash")
+    @Serializable
+    data object Splash : Route(path = "Splash")
+
+    @Serializable
+    data object CharacterList : Route(path = "CharacterList")
 }

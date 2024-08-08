@@ -11,7 +11,7 @@ import com.disney.domain.di.repositoryModule
 import com.disney.domain.di.useCaseModule
 import com.disney.ui.di.uiModule
 import org.koin.compose.KoinApplication
-import com.disney.ui.navigation.Route
+import com.disney.ui.navigation.Route.*
 import com.disney.ui.screens.characterlist.CharacterListScreen
 import ui.screens.splash.SplashScreen
 
@@ -41,20 +41,16 @@ fun AppContent() {
 
     NavHost(
         navController = navController,
-        startDestination = Route.Splash.name
+        startDestination = Splash
     ) {
-        composable(
-            Route.CharacterList.name
-        ) {
-            CharacterListScreen()
+        composable<Splash> {
+            SplashScreen {
+                navController.navigate(CharacterList)
+            }
         }
 
-        composable(
-            Route.Splash.name
-        ) {
-            SplashScreen {
-                navController.navigate(Route.CharacterList.name)
-            }
+        composable<CharacterList> {
+            CharacterListScreen()
         }
     }
 }
